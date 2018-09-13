@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
 
-
 class Accordion extends Component {
+  state = {};
+
   render() {
     const { children, style, className } = this.props;
     return (
       <div style={style} className={className}>
         {children}
       </div>
-    )
+    );
   }
 }
 

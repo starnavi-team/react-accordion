@@ -1,21 +1,22 @@
-import React, {Component} from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
 
-class ItemBody extends Component {
-
-  render() {
-    const { children, isOpened, style, className } = this.props;
-    return (
-      <div>
-        {isOpened &&
-        <div style={style} className={className}>
-          {children}
-        </div>
-        }
+const ItemBody = ({
+  children,
+  isOpened,
+  style,
+  className,
+}) => (
+  <div>
+    {isOpened
+    && (
+      <div style={style} className={className}>
+        {children}
       </div>
-    );
-  }
-}
+    )
+    }
+  </div>
+);
 
 ItemBody.propTypes = {
   style: PropTypes.object,

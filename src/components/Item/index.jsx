@@ -1,25 +1,27 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
 
 class Item extends Component {
   state = {
-    isOpened: false
+    isOpened: false,
   };
 
   onBodyToggle = () => {
-    this.setState({isOpened: !this.state.isOpened})
+    this.setState(prevState => ({ isOpened: !prevState.isOpened }));
   };
 
   render() {
-    const children = React.Children.map(this.props.children, (child) => React.cloneElement(child, {
-      isOpened: this.state.isOpened,
+    const { isOpened } = this.state;
+    const { children, className, style } = this.props;
+    const elements = React.Children.map(children, child => React.cloneElement(child, {
+      isOpened,
       onBodyToggle: this.onBodyToggle,
     }));
     return (
-      <div style={this.props.style} className={this.props.className}>
-        {children}
+      <div style={style} className={className}>
+        {elements}
       </div>
-    )
+    );
   }
 }
 
