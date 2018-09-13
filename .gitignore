@@ -1,2 +1,4 @@
-yarn.lock
+.idea/
 node_modules/
+index.js
+yarn.lock
