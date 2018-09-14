@@ -1,14 +1,14 @@
 Basic usage
 
     <Accordion>
-        <Item>
-            <ItemTitle>
-                Click on            
-            </ItemTitle>
-            <ItemBody>
-                You can put here every element you want
-            </ItemBody>
-        </Item>    
+        <AccordionGroup>
+            <AccordionGroupTitle>
+                Title to click on
+            </AccordionGroupTitle>
+            <AccordionGroupBody>
+                Body part, you can put here any element you want
+            </AccordionGroupBody>
+        </AccordionGroup>
     </Accordion>
 
 
