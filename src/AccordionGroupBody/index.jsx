@@ -1,7 +1,7 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 
-const ItemBody = ({
+const AccordionGroupBody = ({
   children,
   isOpened,
   style,
@@ -18,11 +18,11 @@ const ItemBody = ({
   </div>
 );
 
-ItemBody.propTypes = {
+AccordionGroupBody.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   children: PropTypes.any,
   isOpened: PropTypes.bool,
 };
 
-export default ItemBody;
+export default AccordionGroupBody;

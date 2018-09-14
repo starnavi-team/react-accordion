@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
 
-class Item extends Component {
+class AccordionGroup extends Component {
   state = {
     isOpened: false,
   };
@@ -25,10 +25,10 @@ class Item extends Component {
   }
 }
 
-Item.propTypes = {
+AccordionGroup.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   children: PropTypes.any,
 };
 
-export default Item;
+export default AccordionGroup;
