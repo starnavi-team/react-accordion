@@ -1,5 +1,18 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+export const StyledAccordionGroupTitle = styled.div.attrs({
+  className: props => props.className,
+  style: props => props.style,
+})`
+`;
+
+StyledAccordionGroupTitle.propTypes = {
+  style: PropTypes.object,
+  className: PropTypes.string,
+};
+
 
 const AccordionGroupTitle = ({
   onBodyToggle,
@@ -10,14 +23,14 @@ const AccordionGroupTitle = ({
   <div
     role="heading"
   >
-    <div
+    <StyledAccordionGroupTitle
       style={style}
       className={className}
       onClick={onBodyToggle}
       role="presentation"
     >
       {children}
-    </div>
+    </StyledAccordionGroupTitle>
   </div>
 );
 

@@ -1,5 +1,17 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+export const StyledAccordionGroupBody = styled.div.attrs({
+  className: props => props.className,
+  style: props => props.style,
+})`
+`;
+
+StyledAccordionGroupBody.propTypes = {
+  style: PropTypes.object,
+  className: PropTypes.string,
+};
 
 const AccordionGroupBody = ({
   children,
@@ -10,9 +22,9 @@ const AccordionGroupBody = ({
   <div>
     {isOpened
     && (
-      <div style={style} className={className}>
+      <StyledAccordionGroupBody style={style} className={className}>
         {children}
-      </div>
+      </StyledAccordionGroupBody>
     )
     }
   </div>

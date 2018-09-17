@@ -6,6 +6,7 @@ import {
   AccordionGroupTitle,
   AccordionGroupBody,
 } from '../index';
+import { StyledAccordionGroupTitle } from '../AccordionGroupTitle';
 
 describe('AccordionGroupTitle', () => {
   it('Makes possible to set custom className', () => {
@@ -30,5 +31,15 @@ describe('AccordionGroupTitle', () => {
       </Accordion>,
     );
     expect(testTitle.find('#tested')).toHaveStyle('width', '100px');
+  });
+
+  it('styledAccordionGroupTitle receives custom className', () => {
+    const styled = shallow(<StyledAccordionGroupTitle className="tested" />);
+    expect(styled.hasClass('tested')).toBe(true);
+  });
+
+  it('styledAccordionGroupTitle receives custom styles', () => {
+    const styled = shallow(<StyledAccordionGroupTitle className="tested" style={{ color: 'green' }} />);
+    expect(styled.find('.tested')).toHaveStyle('color', 'green');
   });
 });
