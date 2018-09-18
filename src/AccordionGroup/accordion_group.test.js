@@ -6,7 +6,7 @@ import {
   AccordionGroupTitle,
   AccordionGroupBody,
 } from '../index';
-import { StyledAccordionGroup } from '../AccordionGroup';
+import { StyledAccordionGroup } from './index';
 
 describe('AccordionGroup', () => {
   it('Makes possible to set custom className', () => {
@@ -41,5 +41,10 @@ describe('AccordionGroup', () => {
   it('styledAccordionGroup receives custom styles', () => {
     const styled = shallow(<StyledAccordionGroup className="tested" style={{ color: 'green' }} />);
     expect(styled.find('.tested')).toHaveStyle('color', 'green');
+  });
+
+  it('should render correctly', () => {
+    const component = shallow(<AccordionGroup />);
+    expect(component).toMatchSnapshot();
   });
 });

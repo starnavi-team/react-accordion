@@ -3,11 +3,11 @@ import {
   AccordionGroup,
   AccordionGroupBody,
   AccordionGroupTitle,
-} from '../index';
-import AccordionComponent from '../Accordion';
-import ItemComponent from '../AccordionGroup';
-import ItemTitleComponent from '../AccordionGroupTitle';
-import ItemBodyComponent from '../AccordionGroupBody';
+} from './index';
+import AccordionComponent from './Accordion';
+import ItemComponent from './AccordionGroup';
+import ItemTitleComponent from './AccordionGroupTitle';
+import ItemBodyComponent from './AccordionGroupBody';
 
 describe('index test', () => {
   it('exports all the components properly', () => {

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const StyledAccordionGroupBody = styled.div.attrs({
   className: props => props.className,
   style: props => props.style,
-})`
+})` 
 `;
 
 StyledAccordionGroupBody.propTypes = {
@@ -22,7 +22,7 @@ const AccordionGroupBody = ({
   <div>
     {isOpened
     && (
-      <StyledAccordionGroupBody style={style} className={className}>
+      <StyledAccordionGroupBody style={style} className={className} isOpen={isOpened}>
         {children}
       </StyledAccordionGroupBody>
     )
