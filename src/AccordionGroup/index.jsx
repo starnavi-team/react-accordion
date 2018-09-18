@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+export const StyledAccordionGroup = styled.div.attrs({
+  className: props => props.className,
+  style: props => props.style,
+})`
+`;
+
+StyledAccordionGroup.propTypes = {
+  style: PropTypes.object,
+  className: PropTypes.string,
+};
 
 class AccordionGroup extends Component {
   state = {
@@ -18,9 +30,9 @@ class AccordionGroup extends Component {
       onBodyToggle: this.onBodyToggle,
     }));
     return (
-      <div style={style} className={className}>
+      <StyledAccordionGroup style={style} className={className}>
         {elements}
-      </div>
+      </StyledAccordionGroup>
     );
   }
 }
