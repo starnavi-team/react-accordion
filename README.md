@@ -70,7 +70,7 @@ Pass your custom **_style_** and/or **_className_** to style rendered `<div />` 
 
 **_className_**: `string`
 
-Pass your custom **_style_** and/or **_className_** to style rendered `<div />` of AccordionTitle
+Pass your custom **_style_** and/or **_className_** to style rendered `<div />` of AccordionGroupTitle
 
 ##
 
