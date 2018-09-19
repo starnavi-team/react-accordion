@@ -2,11 +2,15 @@
 
 #### Installation
 
-`npm install @starnavi/react-accordion`
+```
+npm install @starnavi/react-accordion
+```
 
 or
 
-`yarn add @starnavi/react-accordion`
+```
+yarn add @starnavi/react-accordion
+```
 
 ##
 
