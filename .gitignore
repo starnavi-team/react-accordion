@@ -1,4 +1,6 @@
 .idea/
 node_modules
 index.js
+demo.jsx
+index.html
 yarn.lock

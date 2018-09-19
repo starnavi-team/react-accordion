@@ -1,7 +1,10 @@
-const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    demo: './demo/demo.jsx',
+  },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
@@ -11,18 +14,23 @@ module.exports = {
         test: /\.(js|jsx)$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
-      }
-    ]
+      },
+    ],
   },
   output: {
-    filename: 'index.js',
-    path: __dirname + '/',
+    filename: '[name].js',
+    path: `${__dirname}/`,
     publicPath: '/',
     library: 'st-react-accordion',
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/demo/demo.html`,
+    }),
+  ],
   devServer: {
-    contentBase: './'
-  }
+    contentBase: './',
+  },
 };
