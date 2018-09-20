@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
     "lint": "node_modules/.bin/esw src/**/*.{js,jsx}; exit 0",
-    "deploy": "gh-pages -d /",
+    "deploy": "gh-pages -d /demo",
     "test": "jest"
   },
   "repository": {
