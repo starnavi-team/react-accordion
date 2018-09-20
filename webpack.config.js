@@ -28,9 +28,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: `${__dirname}/demo/demo.html`,
+      filename: 'pages/index.html',
     }),
   ],
   devServer: {
-    contentBase: './',
+    contentBase: './pages',
   },
 };
