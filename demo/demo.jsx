@@ -100,23 +100,23 @@ const Example = () => (
             <AccordionGroupBody style={{ background: '#cccccc' }}>
               <Accordion>
                 <AccordionGroup>
-                  <AccordionGroupTitle style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
+                  <TitleOne style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
                     NESTING
-                  </AccordionGroupTitle>
+                  </TitleOne>
                   <AccordionGroupBody style={{ padding: '25px 10px', fontSize: '21px', background: '#c1c1c0' }}>
                     There is a possibility to nest accordion...
                   </AccordionGroupBody>
                 </AccordionGroup>
                 <AccordionGroup>
-                  <AccordionGroupTitle style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
+                  <TitleOne style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
                     DOUBLE NESTING
-                  </AccordionGroupTitle>
+                  </TitleOne>
                   <AccordionGroupBody style={{ background: '#c1c1c0' }}>
                     <Accordion>
                       <AccordionGroup>
-                        <AccordionGroupTitle style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
+                        <TitleOne style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
                           PRESS NESTED
-                        </AccordionGroupTitle>
+                        </TitleOne>
                         <AccordionGroupBody style={{ padding: '25px 10px', fontSize: '21px', background: '#b3b3b1' }}>
                           Nest again and again ...
                         </AccordionGroupBody>
