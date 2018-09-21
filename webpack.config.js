@@ -20,7 +20,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: `${__dirname}/`,
-    publicPath: '/',
+    publicPath: '',
     library: 'st-react-accordion',
     libraryTarget: 'umd',
     umdNamedDefine: true,
