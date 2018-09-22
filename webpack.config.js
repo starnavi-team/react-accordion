@@ -32,7 +32,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[hash:5].[ext]',
-              outputPath: 'icons/',
+              outputPath: '/icons/',
             },
           },
           {
