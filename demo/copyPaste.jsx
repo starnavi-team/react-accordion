@@ -99,6 +99,9 @@ export const SimpleExample = (
           <span className="yellow">alt=</span>
           <span className="green">&quot;random&quot;</span>
           {' '}
+          <span className="yellow">style=</span>
+          <span className="blue">&#123;&#123; width: &#39;100&#37;&#39; &#125;&#125;</span>
+          {' '}
           /&gt;
           <br />
           {'    '}
@@ -228,6 +231,9 @@ export const SimpleExample = (
         <br />
         {'    '}
         padding: 20px 10px;
+        <br />
+        {'    '}
+        font-size: 30px;
       </span>
       <br />
       <br />
@@ -245,42 +251,58 @@ export const SimpleExample = (
       {'    '}
       &#125;
       <br />
-      {'  '}
-      &#125;
-      <br />
-      <br />
-      {'  '}
-      &#38;&#58;hover &#123;
       <br />
       {'    '}
+      &#38;&#58;hover &#123;
+      <br />
+      {'      '}
       <span className="grey">background: #c2c3c4;</span>
       <br />
-      {'  '}
+      {'    '}
       &#125;
       <br />
       <br />
-      {'  '}
+      {'    '}
       &#38;__black &#123;
       <br />
-      {'    '}
+      {'      '}
       <span className="grey">background: #1b1c15;</span>
       <br />
       <br />
-      {'    '}
+      {'      '}
       &#38;&#58;hover &#123;
       <br />
-      {'      '}
+      {'        '}
       <span className="grey">background: #1b1c15;</span>
       <br />
       <br />
-      {'      '}
+      {'        '}
       &gt;img &#123;
       <br />
-      {'        '}
+      {'          '}
       <span className="grey">width: 45px;</span>
+      <br />
+      {'        '}
+      &#125;
       <br />
       {'      '}
       &#125;
+      <br />
+      {'    '}
+      &#125;
+      <br />
+      <br />
+      {'    '}
+      <span className="purple">&#64;media</span>
+      {' '}
+      &#40;
+      <span className="grey">max-width: 400px</span>
+      &#41;
+      {''}
+      &#123;
+      <br />
+      {'      '}
+      <span className="grey">font-size: 25px;</span>
       <br />
       {'    '}
       &#125;
@@ -299,10 +321,6 @@ export const SimpleExample = (
     <span className="grey">
       <span className="purple">const </span>
       titleStyles = &#123;
-      <br />
-      {'  '}
-      fontSize&#58;
-      <span className="green">&#39;30px&#39;,</span>
       <br />
       {'  '}
       fontWeight&#58;
@@ -391,7 +409,7 @@ export const SimpleExampleText = ''
   + '      Simple example with image\n'
   + '    </AccordionGroupTitle>\n'
   + '    <AccordionGroupBody style={bodyStyles}>\n'
-  + '      <img src="https://picsum.photos/300/200/?random" alt="random" />\n'
+  + '      <img src="https://picsum.photos/300/200/?random" alt="random" style={{ width \'100%\' }} />\n'
   + '    </AccordionGroupBody>\n'
   + '  </AccordionGroup>\n'
   + '  <AccordionGroup className="accordion--group">\n'
@@ -449,12 +467,14 @@ export const SimpleExampleText = ''
   + '          width: 45px;\n'
   + '        }\n'
   + '      }\n'
+  + '    }\n\n'
+  + '    @media (max-width: 400px) {\n'
+  + '      font-size: 25px;\n'
   + '    }\n'
   + '  }\n'
   + '}\n\n\n'
   + '//inline styles:\n\n'
   + 'const titleStyles = {\n'
-  + '  fontSize: \'30px\',\n'
   + '  fontWeight: \'700\',\n'
   + '};\n'
   + '\n'
@@ -791,6 +811,9 @@ export const NestedExample = (
         <br />
         {'    '}
         padding: 20px 10px;
+        <br />
+        {'    '}
+        font-size: 30px;
       </span>
       <br />
       <br />
@@ -808,42 +831,58 @@ export const NestedExample = (
       {'    '}
       &#125;
       <br />
-      {'  '}
-      &#125;
-      <br />
-      <br />
-      {'  '}
-      &#38;&#58;hover &#123;
       <br />
       {'    '}
+      &#38;&#58;hover &#123;
+      <br />
+      {'      '}
       <span className="grey">background: #c2c3c4;</span>
       <br />
-      {'  '}
+      {'    '}
       &#125;
       <br />
       <br />
-      {'  '}
+      {'    '}
       &#38;__black &#123;
       <br />
-      {'    '}
+      {'      '}
       <span className="grey">background: #1b1c15;</span>
       <br />
       <br />
-      {'    '}
+      {'      '}
       &#38;&#58;hover &#123;
       <br />
-      {'      '}
+      {'        '}
       <span className="grey">background: #1b1c15;</span>
       <br />
       <br />
-      {'      '}
+      {'        '}
       &gt;img &#123;
       <br />
-      {'        '}
+      {'          '}
       <span className="grey">width: 45px;</span>
+      <br />
+      {'        '}
+      &#125;
       <br />
       {'      '}
       &#125;
+      <br />
+      {'    '}
+      &#125;
+      <br />
+      <br />
+      {'    '}
+      <span className="purple">&#64;media</span>
+      {' '}
+      &#40;
+      <span className="grey">max-width: 400px</span>
+      &#41;
+      {''}
+      &#123;
+      <br />
+      {'      '}
+      <span className="grey">font-size: 25px;</span>
       <br />
       {'    '}
       &#125;
@@ -862,10 +901,6 @@ export const NestedExample = (
     <span className="grey">
       <span className="purple">const </span>
       titleStyles = &#123;
-      <br />
-      {'  '}
-      fontSize&#58;
-      <span className="green">&#39;30px&#39;,</span>
       <br />
       {'  '}
       fontWeight&#58;
@@ -1019,12 +1054,14 @@ export const NestedExampleText = ''
   + '          width: 45px;\n'
   + '        }\n'
   + '      }\n'
+  + '    }\n\n'
+  + '    @media (max-width: 400px) {\n'
+  + '      font-size: 25px;\n'
   + '    }\n'
   + '  }\n'
   + '}\n\n\n'
   + '//inline styles:\n\n'
   + 'const titleStyles = {\n'
-  + '  fontSize: \'30px\',\n'
   + '  fontWeight: \'700\',\n'
   + '};\n'
   + '\n\n\n'

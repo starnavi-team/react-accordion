@@ -58,6 +58,10 @@ const RightAccordion = styled.div`
   
   @media (max-width: 500px) {
     min-width: 260px;
+  } 
+  
+  @media (max-width: 400px) {
+    min-width: 200px;
   }
 `;
 
@@ -72,6 +76,10 @@ const LeftAccordion = styled.div`
   
   @media (max-width: 500px) {
     min-width: 260px;
+  }
+  
+  @media (max-width: 400px) {
+    min-width: 200px;
   }
 `;
 
@@ -187,13 +195,12 @@ const Notification = styled.div`
 `;
 
 const titleStyles = {
-  fontSize: '30px',
   fontWeight: '700',
 };
 
 const bodyStyles = {
   padding: '20px 10px',
-  fontSize: '25px',
+  fontSize: '20px',
   fontWeight: '700',
   background: '#cccccc',
 };
@@ -255,7 +262,7 @@ class Example extends Component {
                   Simple example with image
                 </AccordionGroupTitle>
                 <AccordionGroupBody style={bodyStyles}>
-                  <img src="https://picsum.photos/300/200/?random" alt="random" />
+                  <img src="https://picsum.photos/300/200/?random" alt="random" style={{ width: '100%' }} />
                 </AccordionGroupBody>
               </AccordionGroup>
               <AccordionGroup className="accordion--group">
@@ -301,7 +308,7 @@ class Example extends Component {
                 </AccordionGroupTitle>
                 <AccordionGroupBody>
                   <Description>
-                    <p>Main component, contains block/blocks(AccordionGroups)</p>
+                    <p>Main component, contains block/blocks (AccordionGroups)</p>
                     <p>
                       Optional props:
                       {' '}
@@ -422,8 +429,8 @@ class Example extends Component {
         }
         <Footer>
           <p>
-            The main reason not to set default styles for the Accordion components is to free
-            a developer to style them in his own way.
+            In these examples are shown the ways of passing the props to
+            style the components.
           </p>
         </Footer>
       </MainWrapper>
