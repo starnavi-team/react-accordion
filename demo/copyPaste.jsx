@@ -509,11 +509,7 @@ export const NestedExample = (
         &lt;/AccordionGroupTitle&gt;
       <br />
       {'    '}
-          &lt;AccordionGroupBody
-      {' '}
-      <span className="yellow">style=</span>
-      <span className="blue">&#123;bodyStyles&#125;</span>
-          &gt;
+          &lt;AccordionGroupBody&gt;
       <br />
       {'      '}
           &lt;Description&gt;
@@ -570,11 +566,7 @@ export const NestedExample = (
       &lt;/AccordionGroupTitle&gt;
       <br />
       {'          '}
-      &lt;AccordionGroupBody
-      {' '}
-      <span className="yellow">style=</span>
-      <span className="blue">&#123;bodyStyles&#125;</span>
-      &gt;
+      &lt;AccordionGroupBody&gt;
       <br />
       {'            '}
       &lt;Description&gt;
@@ -627,11 +619,7 @@ export const NestedExample = (
       &lt;/AccordionGroupTitle&gt;
       <br />
       {'              '}
-      &lt;AccordionGroupBody
-      {' '}
-      <span className="yellow">style=</span>
-      <span className="blue">&#123;bodyStyles&#125;</span>
-      &gt;
+      &lt;AccordionGroupBody&gt;
       <br />
       {'                '}
       &lt;Description&gt;
@@ -693,11 +681,7 @@ export const NestedExample = (
       &lt;/AccordionGroupTitle&gt;
       <br />
       {'              '}
-      &lt;AccordionGroupBody
-      {' '}
-      <span className="yellow">style=</span>
-      <span className="blue">&#123;bodyStyles&#125;</span>
-      &gt;
+      &lt;AccordionGroupBody&gt;
       <br />
       {'                '}
       &lt;Description&gt;
@@ -752,7 +736,7 @@ export const NestedExample = (
       <br />
       &lt;/Accordion&gt;
     </span>
-     <br />
+    <br />
     <br />
     <br />
     <span className="light-grey">&#47;&#47;scss styling:</span>
@@ -886,28 +870,6 @@ export const NestedExample = (
       {'  '}
       fontWeight&#58;
       <span className="green">&#39;700&#39;,</span>
-      <br />
-      &#125;
-      <br />
-      <br />
-      <span className="purple">const </span>
-      bodyStyles = &#123;
-      <br />
-      {'  '}
-      padding&#58;
-      <span className="green">&#39;20px 10px&#39;,</span>
-      <br />
-      {'  '}
-      fontSize&#58;
-      <span className="green">&#39;25px&#39;,</span>
-      <br />
-      {'  '}
-      fontWeight&#58;
-      <span className="green">&#39;700&#39;,</span>
-      <br />
-      {'  '}
-      background&#58;
-      <span className="green">&#39;#cccccc&#39;,</span>
       <br />
       &#125;
     </span>
@@ -1065,13 +1027,7 @@ export const NestedExampleText = ''
   + '  fontSize: \'30px\',\n'
   + '  fontWeight: \'700\',\n'
   + '};\n'
-  + '\n'
-  + 'const bodyStyles = {\n'
-  + '  padding: \'20px 10px\',\n'
-  + '  fontSize: \'25px\',\n'
-  + '  fontWeight: \'700\',\n'
-  + '  background: \'#cccccc\',\n'
-  + '};\n\n\n'
+  + '\n\n\n'
   + '//styled component:\n\n'
   + 'const Description = styled.div`\n'
   + '  padding: 10px;\n'

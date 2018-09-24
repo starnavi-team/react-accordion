@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import {
@@ -9,7 +9,12 @@ import {
   AccordionGroupBody,
   AccordionGroupTitle,
 } from '../src/index';
-import { SimpleExample, SimpleExampleText, NestedExample } from './copyPaste';
+import {
+  SimpleExample,
+  SimpleExampleText,
+  NestedExample,
+  NestedExampleText,
+} from './copyPaste';
 import icon from '../assets/icons/favicon.jpg';
 import './demo.scss';
 
@@ -18,17 +23,15 @@ const MainWrapper = styled.div`
   position: relative;
   text-align: center;
   background: #d4d9dd;
-  padding: 30px;
+  padding: 0 30px;
 `;
 
 const Header = styled.h2`
-  padding: 20px;
   color: #333333;
   margin-bottom: 40px;
 `;
 
 const Footer = styled.div`
-  min-height: 100px;
   font-size: 20px;
   padding: 10px;
   position: absolute;
@@ -41,12 +44,17 @@ const Footer = styled.div`
 const AccordionWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 100px;
 `;
 
 const RightAccordion = styled.div`
   flex: 1;
   min-width: 400px;
+  margin-bottom: 100px;
+  
+   @media (max-width: 909px) {
+    margin-top: 30px;
+    margin-bottom: 150px;
+  }
   
   @media (max-width: 500px) {
     min-width: 260px;
@@ -56,32 +64,14 @@ const RightAccordion = styled.div`
 const LeftAccordion = styled.div`
   flex: 1;
   min-width: 450px;
+  margin-bottom: 100px;
+  
+  @media (max-width: 909px) {
+    margin-bottom: 0;
+  }
   
   @media (max-width: 500px) {
     min-width: 260px;
-  }
-`;
-
-const Boss = styled(Accordion)`
-  border: 1px solid #cccccc;
-  border-radius: 3px;
-  margin: 0 auto;
-  background: #9EBDCC;
-`;
-
-const Item = styled(AccordionGroup)`
-  border-top: 1px solid #cccccc;
-  
-  &:first-of-type {
-    border-top: none;
-  }  
-`;
-
-const TitleOne = styled(AccordionGroupTitle)`
-  cursor: pointer;  
-  
-  &:hover {
-    background: #c2c3c4;
   }
 `;
 
@@ -93,7 +83,6 @@ const Description = styled.div`
 `;
 
 const OpenSource = styled.div`
-  width: 80%;
   height: 40px;
   margin: 0 auto;
   display:flex;
@@ -104,6 +93,7 @@ const OpenSource = styled.div`
 `;
 
 const SourceBtn = styled.button`
+  font-weight: 600;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -120,7 +110,7 @@ const SourceBtn = styled.button`
 const CopyExample = styled.div`
   margin: 10px;
   padding: 10px;
-  background: #ccccc1;
+  background: #cfd0d2;
   text-align: left;
   border: 1px solid #ccccc2;
   overflow-x: auto;
@@ -131,6 +121,7 @@ const CopySpan = styled.span`
   cursor: pointer;
   margin-left: 3%;
   padding: 5px;
+  font-weight: 600;
    
   &:hover {
   background: #cccccc;
@@ -151,8 +142,51 @@ const StyledComponent = styled.div`
   background: #9ca3c1;
 `;
 
+const vanishing = keyframes`
+  0% {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+  99% {
+    display: block;
+    opacity: 0;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+`;
+
+const Notification = styled.div`
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 18px;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0px;
+  left: calc(50% - 150px);
+  background: #052f44;
+  ${(props) => {
+    const { isCopied } = props;
+    if (isCopied) {
+      return `
+        animation: ${vanishing} 4s ease-in forwards;
+        animation-fill-mode: forwards; 
+      `;
+    }
+    return null;
+  }
+}
+`;
+
 const titleStyles = {
-  padding: '20px 10px',
   fontSize: '30px',
   fontWeight: '700',
 };
@@ -168,65 +202,83 @@ class Example extends Component {
   state = {
     firstIsOpen: false,
     secondIsOpen: false,
-    copied: false,
+    copiedFromFirst: false,
+    copiedFromSecond: false,
   };
 
   onCopyAreaToggle = (number) => {
     if (number === 1) {
-      this.setState(prevState => ({ firstIsOpen: !prevState.firstIsOpen }));
-    } else {
-      this.setState(prevState => ({ secondIsOpen: !prevState.secondIsOpen }));
+      this.setState(prevState => ({
+        firstIsOpen: !prevState.firstIsOpen,
+        secondIsOpen: false,
+      }));
+    } else if (number === 2) {
+      this.setState(prevState => ({
+        secondIsOpen: !prevState.secondIsOpen,
+        firstIsOpen: false,
+      }));
     }
   }
 
 
   render() {
-    const { firstIsOpen } = this.state;
+    const {
+      firstIsOpen,
+      secondIsOpen,
+      copiedFromSecond,
+      copiedFromFirst,
+    } = this.state;
     return (
       <MainWrapper>
         <Header>
           Here are some examples of usage
         </Header>
         <AccordionWrapper>
-          <RightAccordion>
-            <OpenSource>
-              <SourceBtn onClick={() => this.onCopyAreaToggle(1)}>source &lt; /&gt;</SourceBtn>
+          <LeftAccordion>
+            <OpenSource style={{ width: '80%' }}>
+              <SourceBtn onClick={() => this.onCopyAreaToggle(1)}>
+                source &lt; /&gt;
+                {firstIsOpen && <span> below </span>}
+              </SourceBtn>
             </OpenSource>
-<Accordion className="accordion" style={{ width: '80%' }}>
-  <AccordionGroup className="a-group">
-    <AccordionGroupTitle className="a-group-title" style={titleStyles}>
-      Simple example
-    </AccordionGroupTitle>
-    <AccordionGroupBody style={bodyStyles}>
-      This is the example of simple accordion. This body contains simple text.
-    </AccordionGroupBody>
-  </AccordionGroup>
-  <Item>
-    <AccordionGroupTitle className="a-group-title" style={titleStyles}>
-      Simple example with image
-    </AccordionGroupTitle>
-    <AccordionGroupBody style={bodyStyles}>
-      <img src="https://picsum.photos/300/200/?random" alt="random" />
-    </AccordionGroupBody>
-  </Item>
-  <Item>
-    <AccordionGroupTitle className="a-group-title a-group-title__black" style={titleStyles}>
-      <img src={icon} alt="icon" />
-    </AccordionGroupTitle>
-    <AccordionGroupBody style={bodyStyles}>
-      <StyledComponent>
-        It is a styled component
-      </StyledComponent>
-    </AccordionGroupBody>
-  </Item>
-</Accordion>
+            <Accordion className="accordion" style={{ width: '80%' }}>
+              <AccordionGroup className="accordion--group">
+                <AccordionGroupTitle className="accordion--group-title" style={titleStyles}>
+                  Simple example
+                </AccordionGroupTitle>
+                <AccordionGroupBody style={bodyStyles}>
+                  This is the example of simple accordion. This body contains simple text.
+                </AccordionGroupBody>
+              </AccordionGroup>
+              <AccordionGroup className="accordion--group">
+                <AccordionGroupTitle className="accordion--group-title" style={titleStyles}>
+                  Simple example with image
+                </AccordionGroupTitle>
+                <AccordionGroupBody style={bodyStyles}>
+                  <img src="https://picsum.photos/300/200/?random" alt="random" />
+                </AccordionGroupBody>
+              </AccordionGroup>
+              <AccordionGroup className="accordion--group">
+                <AccordionGroupTitle className="accordion--group-title accordion--group-title__black" style={titleStyles}>
+                  <img src={icon} alt="icon" />
+                </AccordionGroupTitle>
+                <AccordionGroupBody style={bodyStyles}>
+                  <StyledComponent>
+                    It is a styled component
+                  </StyledComponent>
+                </AccordionGroupBody>
+              </AccordionGroup>
+            </Accordion>
             {firstIsOpen && (
             <div style={{ textAlign: 'left', marginTop: '10px' }}>
               <CopyToClipboard
                 text={SimpleExampleText}
-                onCopy={() => this.setState({ copied: true })}
+                onCopy={() => this.setState({
+                  copiedFromFirst: true,
+                  copiedFromSecond: false,
+                })}
               >
-                <CopySpan style={{ cursor: 'pointer', marginLeft: '3%' }}>COPY</CopySpan>
+                <CopySpan>copy</CopySpan>
               </CopyToClipboard>
               <CopyExample>
                 {SimpleExample}
@@ -234,14 +286,20 @@ class Example extends Component {
             </div>
             )
             }
-          </RightAccordion>
-          <LeftAccordion>
-            <Boss>
-              <Item>
-                <TitleOne style={titleStyles}>
-                  Accordion
-                </TitleOne>
-                <AccordionGroupBody style={{ background: '#cccccc' }}>
+          </LeftAccordion>
+          <RightAccordion>
+            <OpenSource>
+              <SourceBtn onClick={() => this.onCopyAreaToggle(2)}>
+                source &lt; /&gt;
+                {secondIsOpen && <span> below </span>}
+              </SourceBtn>
+            </OpenSource>
+            <Accordion className="accordion">
+              <AccordionGroup className="accordion--group">
+                <AccordionGroupTitle className="accordion--group-title" style={titleStyles}>
+                  Accordion-(nested description)
+                </AccordionGroupTitle>
+                <AccordionGroupBody>
                   <Description>
                     <p>Main component, contains block/blocks(AccordionGroups)</p>
                     <p>
@@ -254,11 +312,11 @@ class Example extends Component {
                       <b>className</b>
                     </p>
                   </Description>
-                  <Boss>
-                    <Item>
-                      <TitleOne style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
+                  <Accordion className="accordion accordion__nested">
+                    <AccordionGroup className="accordion--group">
+                      <AccordionGroupTitle className="accordion--group-title" style={titleStyles}>
                         AccordionGroup
-                      </TitleOne>
+                      </AccordionGroupTitle>
                       <AccordionGroupBody>
                         <Description>
                           <p>
@@ -275,10 +333,10 @@ class Example extends Component {
                             <b>className</b>
                           </p>
                         </Description>
-                        <Item>
-                          <TitleOne style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
+                        <AccordionGroup className="accordion--group">
+                          <AccordionGroupTitle className="accordion--group-title" style={titleStyles}>
                             AccordionGroupTitle
-                          </TitleOne>
+                          </AccordionGroupTitle>
                           <AccordionGroupBody>
                             <Description>
                               <p>
@@ -298,11 +356,11 @@ class Example extends Component {
                               </p>
                             </Description>
                           </AccordionGroupBody>
-                        </Item>
-                        <Item>
-                          <TitleOne style={{ padding: '20px 10px', fontSize: '25px', fontWeight: '700' }}>
+                        </AccordionGroup>
+                        <AccordionGroup className="accordion--group">
+                          <AccordionGroupTitle className="accordion--group-title" style={titleStyles}>
                             AccordionGroupBody
-                          </TitleOne>
+                          </AccordionGroupTitle>
                           <AccordionGroupBody>
                             <Description>
                               <p>
@@ -322,17 +380,47 @@ class Example extends Component {
                               </p>
                             </Description>
                           </AccordionGroupBody>
-                        </Item>
+                        </AccordionGroup>
                       </AccordionGroupBody>
-                    </Item>
-                  </Boss>
+                    </AccordionGroup>
+                  </Accordion>
                 </AccordionGroupBody>
-              </Item>
-            </Boss>
-          </LeftAccordion>
+              </AccordionGroup>
+            </Accordion>
+            {secondIsOpen && (
+              <div style={{ textAlign: 'left', marginTop: '10px' }}>
+                <CopyToClipboard
+                  text={NestedExampleText}
+                  onCopy={() => this.setState({
+                    copiedFromFirst: false,
+                    copiedFromSecond: true,
+                  })}
+                >
+                  <CopySpan>copy</CopySpan>
+                </CopyToClipboard>
+                <CopyExample>
+                  {NestedExample}
+                </CopyExample>
+              </div>
+            )
+            }
+          </RightAccordion>
         </AccordionWrapper>
+        {copiedFromFirst
+        && (
+        <Notification isCopied={copiedFromFirst}>
+          copied simple example
+        </Notification>
+        )
+        }
+        {copiedFromSecond
+        && (
+        <Notification isCopied={copiedFromSecond}>
+          copied nested example
+        </Notification>
+        )
+        }
         <Footer>
-          <p><b>To style this examples styled components and in-line styles were used.</b></p>
           <p>
             The main reason not to set default styles for the Accordion components is to free
             a developer to style them in his own way.
