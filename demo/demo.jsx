@@ -9,7 +9,7 @@ import {
   AccordionGroupBody,
   AccordionGroupTitle,
 } from '../src/index';
-import { SimpleExample, SimpleExampleText, NestedExaple } from './copyPaste';
+import { SimpleExample, SimpleExampleText, NestedExample } from './copyPaste';
 import icon from '../assets/icons/favicon.jpg';
 import './demo.scss';
 
