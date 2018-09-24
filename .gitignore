@@ -1,10 +1,11 @@
 .idea/
-node_modules
+node_modules/
 yarn.lock
-assets
-demo
+assets/
+webpack.config.js
+package.json
+demo/
 .babelrc
 .eslintrc
 .npmignore
-webpack.config.js
-package.json
+src/
