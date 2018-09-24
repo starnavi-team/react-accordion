@@ -7,4 +7,4 @@ demo
 .eslintrc
 .npmignore
 webpack.config.js
-yarn.lock
+package.json
