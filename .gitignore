@@ -3,3 +3,8 @@ node_modules
 yarn.lock
 assets
 demo
+webpack.config.js
+package.json
+.babelrc
+.eslintrc
+.npmignore
