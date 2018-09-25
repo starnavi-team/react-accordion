@@ -1,4 +1,3 @@
-const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
@@ -11,18 +10,18 @@ module.exports = {
         test: /\.(js|jsx)$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
-      }
-    ]
+      },
+    ],
   },
   output: {
     filename: 'index.js',
-    path: __dirname + '/',
+    path: `${__dirname}/`,
     publicPath: '/',
     library: 'st-react-accordion',
     libraryTarget: 'umd',
     umdNamedDefine: true,
   },
   devServer: {
-    contentBase: './'
-  }
+    contentBase: './',
+  },
 };
