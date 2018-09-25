@@ -1,12 +1,18 @@
 ## react-accordion
 
+[Demo](https://starnavi-team.github.io/react-accordion/)
+
 #### Installation
 
-`npm install @starnavi/react-accordion`
+```
+npm install @starnavi/react-accordion
+```
 
 or
 
-`yarn add @starnavi/react-accordion`
+```
+yarn add @starnavi/react-accordion
+```
 
 ##
 
